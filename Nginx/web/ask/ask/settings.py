@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+DJANGO_SETTINGS_MODULE = 'ask.settings'
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
