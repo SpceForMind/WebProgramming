@@ -33,7 +33,7 @@ class Question(models.Model):
 		related_name set in other value for avoidong error
 		creation question_set for reverse relation
 	'''
-	likes = models.ManyToManyField(User, related_name = "likes_set", on_delete = models.CASCADE)
+	likes = models.ManyToManyField(User, related_name = "likes_set")
 
 class Answer(models.Model):
 	text = models.TextField()
