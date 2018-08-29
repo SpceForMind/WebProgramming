@@ -1,5 +1,6 @@
 """ask URL Configuration
 
+
 ddThe `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
 Examples:
@@ -14,22 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-'''
-/
-/login/
-/signup/
-/question/<123>/    # вместо <123> - произвольный ID
-/ask/
-/popular/
-/new/
-'''
+from qa import views
 
 urlpatterns = [
-        url(r'^$', include('qa.urls')),
-        url(r'^login/.*', include('qa.urls')),
-        url(r'^question/\w+/', include('qa.urls')),
-        url(r'^signup/.*', include('qa.urls')),
-        url(r'^ask/.*', include('qa.urls')),
-        url(r'^popular/.*', include('qa.urls')),
-        url(r'new/.*', include('qa.urls')),
+  #      url(r'^$', 'qa.views.list_questions'),
+   #     url(r'^login/.*', include('qa.urls')),
+        url(r'^question/(?P<pk>\w+)/$', views.question),
+   #     url(r'^signup/.*', include('qa.urls')),
+   #     url(r'^ask/.*', include('qa.urls')),
+        url(r'^popular/', views.popular_questions),
+	url(r'^\??', views.list_new_questions), 
+   #     url(r'new/.*', include('qa.urls')),
 ]

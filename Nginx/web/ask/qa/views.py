@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render_to_response, renderm get_object_or_404
+from django.shortcuts import render_to_response, render, get_object_or_404
 from qa import models
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
@@ -14,8 +14,8 @@ def paginate(request, qs):
 	except ValueError:
 		raise Http404
 	paginator = Paginator(qs, limit)
-        page = paginator.page(page)
-        return paginator, page
+	page = paginator.page(page)
+	return paginator, page
 
 '''
 	Main page
@@ -53,11 +53,11 @@ def popular_questions(request):
     /question/<question_id>
 '''
 def question(request, pk):
-    question = get_object_or_404(pk = pk)
+    question = get_object_or_404(question_id = pk)
     try:
         answers = models.Answer.objects.filter(question = question)[0:]
     except :
-        answers = None
+        answers = []
     return render_to_response(
         'question.html',
         {
