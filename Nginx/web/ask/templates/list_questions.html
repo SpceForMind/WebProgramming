@@ -6,10 +6,10 @@
 <body>
 	<nav>
 		<ul>
-			{% for question in questions %}
+			{% for q in qs %}
 			<li>
-				<a href = "{{ paginator.base_url }}{{ question.id }}/">
-					{{ question.title }}
+				<a href = "{{ paginator.base_url }}{{ q.id }}/">
+					{{ q.title }}
 				</a>
 			</li>
 			{% endfor %}

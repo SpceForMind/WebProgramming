@@ -29,7 +29,7 @@ def list_new_questions(request):
 		'list_questions.html',
                 {
 		    'paginator': paginator,
-	    	    'quesitons': page.object_list,
+	    	    'qs': page.object_list[0:],
                 },
 	)   
 '''
@@ -44,7 +44,7 @@ def popular_questions(request):
                 'list_questions.html',
                 {
                     'paginator': paginator, 
-                    'questions': questions[0:],
+                    'qs': questions[0:],
                 },
     )
 
@@ -55,13 +55,13 @@ def popular_questions(request):
 def question(request, pk):
     question = get_object_or_404(question_id = pk)
     try:
-        answers = models.Answer.objects.filter(question = question)[0:]
+        answers = models.Answer.objects.filter(question = question)
     except :
         answers = []
     return render_to_response(
         'question.html',
         {
-            'question': question,
-            'answers': answers, 
+            'q': question,
+            'ans': answers[0:], 
         },
     )

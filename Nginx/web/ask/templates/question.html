@@ -4,10 +4,10 @@
 		<meta charset="utf-8" content="text/html">
 	</head>
 	<body>
-		<h1>{{ question.title }}</h1>
+		<h1>{{ q.title }}</h1>
 		<p>{{ question.text }}</p>
-		{% for answer in answers %}
-			{{ answer.text }}			
+		{% for a in ans %}
+			{{ a.text }}			
 		{% endfor %}
 	</body>
 </html>
