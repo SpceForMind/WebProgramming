@@ -26,14 +26,14 @@ class Question(models.Model):
 	'''
 		<n questions> : <1 user>
 	'''
-	author = models.ForeignKey(User)
+	author = models.ForeignKey(User, on_delete = models.DO_NOTHING)
 	'''
 		<n questions> : <m users>
 		likes is list of users 
 		related_name set in other value for avoidong error
 		creation question_set for reverse relation
 	'''
-	likes = models.ManyToManyField(User, related_name = "likes_set")
+	likes = models.ManyToManyField(User, related_name = "likes_set", on_delete = models.CASCADE)
 
 class Answer(models.Model):
 	text = models.TextField()
@@ -41,8 +41,8 @@ class Answer(models.Model):
 	'''
 		<n answers> : <1 question>
 	'''
-	question = models.ForeignKey(Question)
+	question = models.ForeignKey(Question, on_delete = models.DO_NOTHING)
 	'''
 		<n answers> : <1 author>
 	'''
-	author = models.ForeignKey(User)
+	author = models.ForeignKey(User, on_delete = models.DO_NOTHING)
