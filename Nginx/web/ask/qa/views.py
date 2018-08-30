@@ -53,9 +53,9 @@ def popular_questions(request):
     /question/<question_id>
 '''
 def question(request, pk):
-    question = get_object_or_404(question_id = pk)
+    question = get_object_or_404(models.Question, id = pk)
     try:
-        answers = models.Answer.objects.filter(question = question)
+        answers = models.Answer.obj ects.filter(question = question)
     except :
         answers = []
     return render_to_response(
