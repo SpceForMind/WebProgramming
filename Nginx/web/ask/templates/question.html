@@ -5,9 +5,11 @@
 	</head>
 	<body>
 		<h1>{{ q.title }}</h1>
-		<p>{{ question.text }}</p>
+		<p>{{ q.text }}</p>
+		<p>
 		{% for a in ans %}
 			{{ a.text }}			
 		{% endfor %}
+		</p>
 	</body>
 </html>

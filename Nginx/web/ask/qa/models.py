@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 #Manager of model <Question>
 class QuestionManager(models.Manager):
 	'''
-		sort by add date
+		sort by id
 	'''
 	def new(self):
-		return self.order_by("-added_at")
+		return self.order_by("-id")
 	'''
 		sort by rating
 	'''
